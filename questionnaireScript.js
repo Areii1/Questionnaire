@@ -1,3 +1,67 @@
+var questionsAndAnswers = [
+  {
+    question: 'What is the color of the sky?',
+    options: [
+      {
+        label: 'blue',
+        rightAnswer: true
+      },
+      {
+        label: 'red',
+        rightAnswer: false
+      },
+      {
+        label: 'black',
+        rightAnswer: false
+      },
+      {
+        label: 'purple',
+        rightAnswer: false
+      }
+    ]
+  },
+  {
+    question: 'Am I going out tonight?',
+    options: [
+      {
+        label: 'NO',
+        rightAnswer: false
+      },
+      {
+        label: 'yes',
+        rightAnswer: true
+      },
+      {
+        label: 'maybe',
+        rightAnswer: false
+      },
+      {
+        label: 'HELL FUCKING NO',
+        rightAnswer: false
+      }
+    ]
+  }
+];
+
+createQuestions();
+
+function createQuestions() {
+  for (var i = 0; i < questionsAndAnswers.length; i++) {
+    console.log(questionsAndAnswers[i]);
+    var question = questionsAndAnswers[i].question;
+
+    var questionHeader = document.createElement('h3');
+    var questionHeaderText = document.createTextNode(question);
+    questionHeader.appendChild(questionHeaderText);
+
+    document.getElementById('questions').appendChild(questionHeader);
+
+    for (var j = 0; j < questionsAndAnswers[i].options.length; j++) {
+      console.log(questionsAndAnswers[i].options[j]);
+    }
+  }
+}
+
 var form = document.getElementById('questionnaire');
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
