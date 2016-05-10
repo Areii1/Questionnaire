@@ -7,6 +7,8 @@ form.addEventListener('submit', function(e) {
   console.log('answer3 correct? ' + isRightAnswer(getGuess('answerType3')));
   console.log('answer4 correct? ' + isRightAnswer(getGuess('answerType4')));
   console.log('answer5 correct? ' + isRightAnswer(getGuess('answerType5')));
+
+  showResults();
 });
 
 function getGuess(answerType) {
@@ -25,5 +27,18 @@ function isRightAnswer(guess) {
   }
   else {
     return false;
+  }
+}
+
+function showResults() {
+  if (isRightAnswer(getGuess('answerType1')) 
+    && isRightAnswer(getGuess('answerType2')) 
+    && isRightAnswer(getGuess('answerType3')) 
+    && isRightAnswer(getGuess('answerType4')) 
+    && isRightAnswer(getGuess('answerType5'))) {
+    alert('All 5 questions correct');
+  }
+  else {
+    alert('Not all questions were correct');
   }
 }
