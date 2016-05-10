@@ -47,7 +47,6 @@ createQuestions();
 
 function createQuestions() {
   for (var i = 0; i < questionsAndAnswers.length; i++) {
-    console.log(questionsAndAnswers[i]);
     var question = questionsAndAnswers[i].question;
 
     renderHeader(question);
@@ -64,7 +63,6 @@ function renderHeader(question) {
 
 function renderOptions(options, questionIndex) {
     for (var i = 0; i < options.length; i++) {
-      console.log(options[i]);
       var optionDiv = document.createElement('div');
       var optionInput = document.createElement('input');
       optionInput.type = 'radio';
@@ -90,7 +88,7 @@ form.addEventListener('submit', function(e) {
 	e.preventDefault();
 
   if (isEveryQuestionAnswered()) {
-    showResults();
+   // showResults();
   }
   else {
     alert('Answer every question!');
@@ -139,14 +137,10 @@ function isValidGuess(guess) {
 }
 
 function isEveryQuestionAnswered() {
-  if (isValidGuess(getGuess('answerType1')) 
-    && isValidGuess(getGuess('answerType2')) 
-    && isValidGuess(getGuess('answerType3'))
-    && isValidGuess(getGuess('answerType4'))
-    && isValidGuess(getGuess('answerType5'))) {
-    return true;
+  for (var i = 0; i < questionsAndAnswers.length; i++) {
+    if (!isValidGuess(getGuess(i))) {
+      return false;
+    }
   }
-  else {
-    return false;
-  }
+  return true;
 }
