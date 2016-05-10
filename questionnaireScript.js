@@ -2,13 +2,12 @@ var form = document.getElementById('questionnaire');
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
 
-  console.log('answer1 correct? ' + isRightAnswer(getGuess('answerType1')));
-  console.log('answer2 correct? ' + isRightAnswer(getGuess('answerType2')));
-  console.log('answer3 correct? ' + isRightAnswer(getGuess('answerType3')));
-  console.log('answer4 correct? ' + isRightAnswer(getGuess('answerType4')));
-  console.log('answer5 correct? ' + isRightAnswer(getGuess('answerType5')));
-
-  showResults();
+  if (isEveryQuestionAnswered()) {
+    showResults();
+  }
+  else {
+    alert('Answer every question!');
+  }
 });
 
 function getGuess(answerType) {
@@ -40,5 +39,27 @@ function showResults() {
   }
   else {
     alert('Not all questions were correct');
+  }
+}
+
+function isValidGuess(guess) {
+  if (guess == undefined) {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+function isEveryQuestionAnswered() {
+  if (isValidGuess(getGuess('answerType1')) 
+    && isValidGuess(getGuess('answerType2')) 
+    && isValidGuess(getGuess('answerType3'))
+    && isValidGuess(getGuess('answerType4'))
+    && isValidGuess(getGuess('answerType5'))) {
+    return true;
+  }
+  else {
+    return false;
   }
 }
