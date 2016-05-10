@@ -1,43 +1,106 @@
 var questionsAndAnswers = [
   {
-    question: 'What is the color of the sky?',
+    question: 'Who created javascript?',
     options: [
       {
-        label: 'blue',
+        label: 'Brendan Eich',
         rightAnswer: true
       },
       {
-        label: 'red',
+        label: 'Henrik Raitasola',
         rightAnswer: false
       },
       {
-        label: 'black',
+        label: 'Linus Torvalds',
         rightAnswer: false
       },
       {
-        label: 'purple',
+        label: 'Steve Ballmer',
         rightAnswer: false
       }
     ]
   },
   {
-    question: 'Am I going out tonight?',
+    question: 'Which year was javascript released?',
     options: [
       {
-        label: 'NO',
+        label: '1999',
         rightAnswer: false
       },
       {
-        label: 'yes',
+        label: '1995',
         rightAnswer: true
       },
       {
-        label: 'maybe',
+        label: '2007',
         rightAnswer: false
       },
       {
-        label: 'HELL FUCKING NO',
+        label: '1976',
         rightAnswer: false
+      }
+    ]
+  },
+  {
+    question: 'Which language is javascript mostly based on?',
+    options: [
+      {
+        label: 'Python',
+        rightAnswer: false
+      },
+      {
+        label: 'C',
+        rightAnswer: true
+      },
+      {
+        label: 'Clojure',
+        rightAnswer: false
+      },
+      {
+        label: 'Shabba',
+        rightAnswer: false
+      }
+    ]
+  },
+  {
+    question: 'What is another name for Ecmascript 2015?',
+    options: [
+      {
+        label: 'AS782',
+        rightAnswer: false
+      },
+      {
+        label: 'Clojure',
+        rightAnswer: false
+      },
+      {
+        label: 'ES6',
+        rightAnswer: true
+      },
+      {
+        label: '1976',
+        rightAnswer: false
+      }
+    ]
+  },
+  {
+    question: 'What is a popular javascript framework called?',
+    options: [
+      {
+        label: 'Nude.js',
+        rightAnswer: false
+      },
+      {
+        label: 'IngularJS',
+        rightAnswer: false
+      },
+      {
+        label: 'Clojure',
+        rightAnswer: false
+      },
+      {
+        label: 'ReactJS',
+        rightAnswer: true
       }
     ]
   }
@@ -88,7 +151,7 @@ form.addEventListener('submit', function(e) {
 	e.preventDefault();
 
   if (isEveryQuestionAnswered()) {
-   // showResults();
+   showResults();
   }
   else {
     alert('Answer every question!');
@@ -115,16 +178,13 @@ function isRightAnswer(guess) {
 }
 
 function showResults() {
-  if (isRightAnswer(getGuess('answerType1')) 
-    && isRightAnswer(getGuess('answerType2')) 
-    && isRightAnswer(getGuess('answerType3')) 
-    && isRightAnswer(getGuess('answerType4')) 
-    && isRightAnswer(getGuess('answerType5'))) {
-    alert('All 5 questions correct');
+  for (var i = 0; i < questionsAndAnswers.length; i++) {
+    if (!isRightAnswer(getGuess(i))) {
+      alert('Not all questions were correct');
+      return;
+    }
   }
-  else {
-    alert('Not all questions were correct');
-  }
+  alert('All questions were correct');
 }
 
 function isValidGuess(guess) {
