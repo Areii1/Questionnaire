@@ -3,9 +3,10 @@ createQuestions();
 function createQuestions() {
   for (var i = 0; i < questionsAndAnswers.length; i++) {
     var question = questionsAndAnswers[i].question;
-
+    var options = questionsAndAnswers[i].options;
+    
     renderHeader(question);
-    renderOptions(questionsAndAnswers[i].options, i);
+    renderOptions(options, i);
   }
 }
 
