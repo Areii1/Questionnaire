@@ -71,13 +71,24 @@ function isRightAnswer(guess) {
 }
 
 function showResults() {
+  var counter = 0;
   for (var i = 0; i < questionsAndAnswers.length; i++) {
-    if (!isRightAnswer(getGuess(i))) {
-      alert('Not all questions were correct');
-      return;
+    if (isRightAnswer(getGuess(i))) {
+      counter++;
     }
   }
-  alert('All questions were correct');
+  if (counter == 0) {
+    alert('Oh no, you got em all wrong >:(');
+  }
+  else if (counter < questionsAndAnswers.length/2) {
+    alert('Damn, less than half were right (' + counter + ')');
+  }
+  else if (counter == questionsAndAnswers.length) {
+    alert('FANTASTIC, you got everything correct');
+  }
+  else if(counter => questionsAndAnswers.length/2) {
+    alert('Nice, atleast half were right (' + counter + ')');
+  }
 }
 
 function isValidGuess(guess) {
